@@ -4,25 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.knoldus</groupId>
-    <artifactId>assignment-day-one</artifactId>
+    <groupId>org.example</groupId>
+    <artifactId>streams-java</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <!--        <build>-->
-    <!--            <plugins>-->
-    <!--                <plugin>-->
-    <!--                    <groupId>org.apache.maven.plugins</groupId>-->
-    <!--                    <artifactId>maven-compiler-plugin</artifactId>-->
-    <!--                    <configuration>-->
-    <!--                        <source>8</source>-->
-    <!--                        <target>8</target>-->
-    <!--                    </configuration>-->
-    <!--                </plugin>-->
-    <!--            </plugins>-->
-    <!--        </build>-->
+
 
 
     <properties>
-
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skipUTs>false</skipUTs>
         <skipITs>false</skipITs>
@@ -38,7 +27,12 @@
         <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
         <maven.failsafe.plugin.version>2.22.0</maven.failsafe.plugin.version>
         <maven.jacoco.plugin.version>0.7.9</maven.jacoco.plugin.version>
-        
+        <maven.findbugs.plugin.version>3.0.5</maven.findbugs.plugin.version>
+
+        <maven.pmd.plugin.version>3.12.0</maven.pmd.plugin.version>
+
+
+
     </properties>
 
 
@@ -56,38 +50,6 @@
 
     <build>
         <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-               
-                <configuration>
-                    <outputDirectory>${project.build.directory}/findbugs</outputDirectory>
-                    <xmlOutput>true</xmlOutput>
-                    <xmlOutputDirectory>target/findbugs</xmlOutputDirectory>
-                    <threshold>Low</threshold>
-                    <effort>Max</effort>
-                    <failOnError>true</failOnError>
-                    
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -288,9 +250,6 @@
                 <version>1.6.0</version>
                 <configuration>
                     <executable>java</executable>
-                    <!--
-                              <mainClass>com.knoldus.AppDriver</mainClass>
-                    -->
                 </configuration>
                 <executions>
                     <execution>
@@ -310,13 +269,45 @@
                     <archive>
                         <manifest>
                             <!-- Jar file entry point -->
-                            <mainClass>com.knoldus.AppDriver</mainClass>
+                            <mainClass>com.knoldus.view.AppDriver</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
 
+            <!--findbugs plugin  -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${maven.findbugs.plugin.version}</version>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/findbugs</outputDirectory>
+                    <xmlOutput>true</xmlOutput>
+                    <xmlOutputDirectory>target/findbugs</xmlOutputDirectory>
+                    <threshold>Low</threshold>
+                    <effort>Max</effort>
+                    <failOnError>true</failOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
+
 
 </project>
