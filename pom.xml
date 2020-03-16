@@ -70,7 +70,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
-                <version>${maven.findbugs.plugin.version}</version>
+               
                 <configuration>
                     <outputDirectory>${project.build.directory}/findbugs</outputDirectory>
                     <xmlOutput>true</xmlOutput>
