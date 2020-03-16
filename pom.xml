@@ -78,7 +78,7 @@
                     <threshold>Low</threshold>
                     <effort>Max</effort>
                     <failOnError>true</failOnError>
-                    <excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>
+                    
                 </configuration>
                 <executions>
                     <execution>
